@@ -19,14 +19,11 @@ import pickle
 catalog = []
 
 # functions
-
-
 def serialize_data():
     writer = open('sngManager.data', 'wb')  # wb = written binary
     pickle.dump(catalog, writer)
     writer.close()
     print("** Data Saved!")
-
 
 def deserialize_data():
     try:
@@ -40,7 +37,6 @@ def deserialize_data():
         print(f"** Loaded {len(catalog)} albums ")
     except:
         print("** Error saving data")
-
 
 def register_album():
     print_header("Register new album")
@@ -59,7 +55,6 @@ def register_album():
     catalog.append(album)
     print(album)
 
-
 def register_song():
     print_catalog()
 
@@ -71,26 +66,23 @@ def register_song():
             found = True
             print_header(f"Add song to album: {album.title}")
             title = input("Provide the title: ")
-            length = int(input("Provide length in secs"))
-            composer = input("Provide the composer")
+            length = int(input("Provide length in secs "))
+            composer = input("Provide the composer ")
 
             song_id = 1
-            if(len(song_id) > 0):
-                last_song = song_id[-1]
-                song_id = last_song.song_id + 1
+            if(len(album.songs) > 1):
+                id = album.songs[-1].id + 1
 
             song = Song(song_id, title, length, composer)
             album.songs.append(song)
         if not found:
             print("Error: Wrong album id, try again!")
 
-
 def print_catalog():
     print_header("Your catalog")
 
     for album in catalog:
         print(album)
-
 
 def print_songs():
     print_catalog()
@@ -103,7 +95,7 @@ def print_songs():
             found = True
             print_header(f"Songs inside album: {album.title}")
             for song in album.songs:
-                print(f"{song.id} | {song.title}")
+                print(f"{song.id} | {song.title} | Length: {song.length_of_track}sec | Composed by: {song.written_by}")
         if not found:
             print("Error: Wrong album id, try again!")
 
@@ -115,9 +107,7 @@ def count_songs():
     
     song_count_array = len([al.songs for al in catalog])
     print(song_count)
-    print(f"song count array: {song_count_array}")
-
-
+    print(f"Song count total: {song_count_array}")
 
 def total():
     print_header("Total $ of the catalog")
@@ -129,10 +119,18 @@ def total():
 
     print(f"The total is ${total}")
 
-
 def delete_song():
-    print("delete song")
-    song_to_delete = int(input(""))
+    print_catalog()
+    song_to_delete = int(input("Select a song from list: "))
+    found = False
+    for album in catalog:
+        if(album.id == id):
+            found = True
+            print_header(f"Songs inside album: {album.title}")
+            for song in album.songs:
+                print(f"{song.id} | {song.title} | Length: {song.length_of_track}sec | Composed by: {song.written_by}")
+        if not found:
+            print("Error: Wrong album id, try again!")
 
 def delete_album():
     print("delete album")

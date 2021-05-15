@@ -11,4 +11,4 @@ class Album:
 
 
     def __str__(self):
-        return str(self.id) + "|" +self.title + " | " + self.genre+ "|" + self.artist_name + "|"  + str(self.price) + "|" + str(self.release_year)
+        return str(self.id) + " | " +self.title + " | " + self.genre+ " | " + self.artist_name + " | "  + str(self.price) + " | " + str(self.release_year)
