@@ -10,7 +10,7 @@ def print_menu():
     print("[6]- Total $ in the catalog")
     print("[7]- Delete Song")
     print("[8]- Delete Album") # only let user delete empty album, do no let them delete with songs inside
-    
+    print("[9]- Most expensive album")
     print("[q] Quit")
 
 
